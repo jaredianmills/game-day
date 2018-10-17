@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import * as actions from '../actions'
+import * as userActions from '../actions/userActions'
 
 const withAuth = (WrappedComponent) => {
   class AuthorizedComponent extends React.Component {
@@ -24,14 +24,14 @@ const withAuth = (WrappedComponent) => {
 
   const mapStateToProps = (state) => {
     return {
-      loggedIn: state.loggedIn,
-      authenticatingUser: state.authenticatingUser
+      loggedIn: state.userReducer.loggedIn,
+      authenticatingUser: state.userReducer.authenticatingUser
     }
   }
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      fetchCurrentUser: () => dispatch(actions.fetchCurrentUser())
+      fetchCurrentUser: () => dispatch(userActions.fetchCurrentUser())
     }
   }
 
