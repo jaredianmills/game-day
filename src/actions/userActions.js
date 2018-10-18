@@ -62,6 +62,7 @@ export const createUser = (user) => {
         }
       })
       .then(JSONResponse => {
+        console.log(JSONResponse)
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
       })

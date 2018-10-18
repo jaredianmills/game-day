@@ -22,7 +22,6 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
     <Menu borderless style={{width: '30%', marginLeft: '20%', padding: "3%"}}>
         <Form onSubmit={this.handleSubmit}>
