@@ -4,6 +4,7 @@ import { Tab } from 'semantic-ui-react'
 import { withRouter, Redirect } from 'react-router'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
+import { Dimmer, Loader } from 'semantic-ui-react'
 
 
 const panes = [
@@ -29,9 +30,19 @@ class LoginOrSignup extends Component {
     )
   }
 
+  renderDimmer = () => {
+      return (
+        <Dimmer active inverted>
+          <Loader size='large'>Loggin In User</Loader>
+        </Dimmer>
+      )
+    }
+
   render() {
-    if (this.props.user.loggedIn) {
+    if (this.props.loggedIn) {
       return <Redirect to='/' />
+    } else if (this.props.authenticatingUser) {
+      return this.renderDimmer()
     } else {
       return this.renderForms()
     }
@@ -41,7 +52,9 @@ class LoginOrSignup extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.userReducer
+    user: state.userReducer.user,
+    loggedIn: state.userReducer.loggedIn,
+    authenticatingUser: state.userReducer.authenticatingUser,
   }
 }
 

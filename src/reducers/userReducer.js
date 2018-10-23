@@ -16,6 +16,10 @@ const userReducer = (state = initialState, action) => {
     case 'FAILED_LOGIN':
       return {...state, userError: action.payload}
 
+    case 'LOG_OUT':
+      localStorage.clear()
+      return {...state, user: null, loggedIn: false}
+
     default:
       return state
   }

@@ -69,3 +69,8 @@ export const createUser = (user) => {
       .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.error })))
   }
 }
+
+export const logOut = () => {
+  console.log('hit');
+  return {type: 'LOG_OUT'}
+}

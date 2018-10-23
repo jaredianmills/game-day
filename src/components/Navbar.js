@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Segment, Menu, Container, Image } from 'semantic-ui-react'
+import { Segment, Menu, Container, Image, Button } from 'semantic-ui-react'
+import { logOut } from '../actions/userActions'
 
 let logo = require(`../images/goboard.jpeg`)
 
 const Navbar = (props) => {
+  console.log(props);
   return (
     <Segment vertical>
       <Menu borderless style={{border: 'none', boxShadow: 'none'}}>
@@ -14,7 +16,20 @@ const Navbar = (props) => {
         <Menu.Item style={{textAlign: 'center', float: 'left'}}>
           <h1 style={{fontSize: '4em'}}>Game Day</h1>
         </Menu.Item>
-        {props.user ? <Menu.Item><h1>Welcome {props.user.username}</h1></Menu.Item> : null}
+        {props.user ?
+          <React.Fragment>
+            <Menu.Item>
+              <h1>
+                Welcome {props.user.username}
+              </h1>
+            </Menu.Item>
+            <Menu.Item>
+              <Button onClick={props.logOut}>
+                Log Out
+              </Button>
+            </Menu.Item>
+          </React.Fragment>
+        : null}
       </Menu>
     </Segment>
   )
@@ -22,8 +37,14 @@ const Navbar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.userReducer.user
+    user: state.userReducer.user,
   }
 }
 
-export default connect(mapStateToProps)(Navbar)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logOut: () => dispatch(logOut())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
