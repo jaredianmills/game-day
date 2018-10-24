@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Segment, Menu, Container, Image, Button } from 'semantic-ui-react'
+import { Segment, Menu, Image, Button } from 'semantic-ui-react'
 import { logOut } from '../actions/userActions'
 
 let logo = require(`../images/goboard.jpeg`)
 
 const Navbar = (props) => {
-  console.log(props);
   return (
     <Segment vertical>
       <Menu borderless style={{border: 'none', boxShadow: 'none'}}>
@@ -18,12 +17,12 @@ const Navbar = (props) => {
         </Menu.Item>
         {props.user ?
           <React.Fragment>
-            <Menu.Item>
+            {/* <Menu.Item position='right' style={{marginRight: '10%'}}>
               <h1>
                 Welcome {props.user.username}
               </h1>
-            </Menu.Item>
-            <Menu.Item>
+            </Menu.Item> */}
+            <Menu.Item position='right'>
               <Button onClick={props.logOut}>
                 Log Out
               </Button>

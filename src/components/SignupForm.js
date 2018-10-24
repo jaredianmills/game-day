@@ -23,10 +23,10 @@ class LoginForm extends Component {
 
   render() {
     return (
-    <div style={{width: '50%', marginLeft: '25%', padding: "3%", height: '40%'}}>
-      <Menu borderless widths={2}>
-        <Menu.Item><h3>Sign Up</h3></Menu.Item>
-        <Menu.Item position='right'>
+    <div style={{width: '90%', marginLeft: '5%', height: '40%'}}>
+      <Menu borderless widths={2} style={{paddingRight: '10%'}}>
+        <Menu.Item position="left"><h3>Sign Up</h3></Menu.Item>
+        <Menu.Item>
           <Form onSubmit={this.handleSubmit}>
             <Form.Input name='username' placeholder='username' value={this.state.username} onChange={this.handleChange}/>
             <Form.Input name='password' type='password' placeholder='password' value={this.state.password} onChange={this.handleChange}/>

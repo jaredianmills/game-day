@@ -71,6 +71,5 @@ export const createUser = (user) => {
 }
 
 export const logOut = () => {
-  console.log('hit');
   return {type: 'LOG_OUT'}
 }

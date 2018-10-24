@@ -25,7 +25,7 @@ class LoginOrSignup extends Component {
   renderForms = () => {
     return (
       <React.Fragment>
-        <Tab panes={panes} menu={{borderless: true, tabular: false}}/>
+        <Tab panes={panes} menu={{borderless: true, tabular: false}} style={{width: '100%'}}/>
       </React.Fragment>
     )
   }

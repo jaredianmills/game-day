@@ -23,13 +23,18 @@ class LoginForm extends Component {
 
   render() {
     return (
-    <Menu borderless style={{width: '30%', marginLeft: '20%', padding: "3%"}}>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Input name='username' placeholder='username' value={this.state.username} onChange={this.handleChange}/>
-          <Form.Input name='password' type='password' placeholder='password' value={this.state.password} onChange={this.handleChange}/>
-          <Button>Submit</Button>
-        </Form>
-    </Menu>
+      <div style={{width: '90%', marginLeft: '5%', height: '40%'}}>
+        <Menu borderless widths={2} style={{paddingRight: '10%'}}>
+          <Menu.Item><h3>Log In</h3></Menu.Item>
+          <Menu.Item position='right'>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Input name='username' placeholder='username' value={this.state.username} onChange={this.handleChange}/>
+              <Form.Input name='password' type='password' placeholder='password' value={this.state.password} onChange={this.handleChange}/>
+              <Button>Submit</Button>
+            </Form>
+          </Menu.Item>
+        </Menu>
+    </div>
     )
   }
 
