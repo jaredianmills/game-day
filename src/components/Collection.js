@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import withAuth from '../hocs/withAuth'
-import { Form, Button, Menu, Dimmer, Loader, Card } from 'semantic-ui-react'
+import { Form, Button, Menu, Dimmer, Loader, Card, Input } from 'semantic-ui-react'
 import { addBGGUsernameToUser, fetchBGGCollection } from '../actions/collectionActions'
 import Boardgame from './Boardgame'
 
@@ -10,7 +10,8 @@ class Collection extends Component {
     super(props)
 
     this.state = {
-      bgg_username: ''
+      bgg_username: '',
+      playerCount: ''
     }
   }
 
@@ -54,11 +55,15 @@ class Collection extends Component {
       )
     }
 
+    filterGames = () => {
+      return this.props.games.filter(game => game.best_at.includes(this.state.playerCount))
+    }
+
     renderGames = () => {
       return (
-        <Card.Group style={{marginRight: '5%'}}>
-          {this.props.games.map(game => <Boardgame key={game.objectid} boardgame={game} />)}
-        </Card.Group>
+          <Card.Group>
+            {this.filterGames().map(game => <Boardgame key={game.objectid} boardgame={game} />)}
+          </Card.Group>
       )
     }
 
@@ -66,7 +71,8 @@ class Collection extends Component {
     console.log(this.props);
     return (
       <React.Fragment>
-        <br/>
+          <Input name='playerCount' type="number" placeholder='Enter Player Count' value={this.state.playerCount} onChange={this.handleChange} />
+        <br/><br/>
         {this.props.fetchingBGGCollection ? this.renderDimmer() : this.renderGames()}
         {this.props.user.bgg_username ? null : this.checkForBGGUsername()}
       </React.Fragment>

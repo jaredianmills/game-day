@@ -12,10 +12,13 @@ const collectionReducer = (state = initialState, action) => {
       return {...state, fetchingBGGCollection: false}
 
     case 'ADD_COLLECTION_TO_STATE':
-      return {...state, games: action.payload, fetchingBGGCollection: false}
+      return {...state, games: action.payload}
 
     case 'ADD_GAME_TO_STATE':
-      return {...state, games: [...state.games, action.payload]}
+      return {...state, games: [...state.games, action.payload], fetchingBGGCollection: false}
+
+    case 'LOG_OUT':
+      return {...state, games: []}
 
     default:
       return state

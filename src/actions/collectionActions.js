@@ -22,7 +22,7 @@ export const addBGGUsernameToUser = (user, bgg_username) => {
 
 export const fetchBGGCollection = (bgg_username) => {
   return (dispatch) => {
-    // dispatch({type: 'FETCHING_BGG_COLLECTION'})
+    dispatch({type: 'FETCHING_BGG_COLLECTION'})
     let configObj = {
       method: "POST",
       headers: {
