@@ -16,6 +16,9 @@ const userReducer = (state = initialState, action) => {
     case 'FAILED_LOGIN':
       return {...state, userError: action.payload, authenticatingUser: false}
 
+    case 'ADD_BGG_USERNAME_TO_USER_IN_STATE':
+      return {...state, user: action.payload}
+
     case 'LOG_OUT':
       localStorage.clear()
       return {...state, user: null, loggedIn: false}

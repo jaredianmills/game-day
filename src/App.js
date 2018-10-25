@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import NotFound from './components/NotFound'
 import LoginOrSignup from './components/LoginOrSignup'
 import Collection from './components/Collection'
+import CollectionOptions from './components/CollectionOptions'
 
 class App extends Component {
   render() {
@@ -13,7 +14,7 @@ class App extends Component {
       <React.Fragment>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Collection} />
+          <Route exact path="/" component={CollectionOptions} />
           <Route exact path="/login" component={LoginOrSignup} />
           <Route component={NotFound} />
         </Switch>

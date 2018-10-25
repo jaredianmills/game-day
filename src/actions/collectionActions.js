@@ -16,6 +16,10 @@ export const addBGGUsernameToUser = (user, bgg_username) => {
         throw response
       }
     })
+    .then(user => {
+      dispatch({type: 'ADD_BGG_USERNAME_TO_USER_IN_STATE', payload: user})
+      dispatch(fetchBGGCollection(user.bgg_username))
+    })
     .catch(r => r.json().then(e => dispatch({ type: 'FAILED_TO_ADD_BGG_USERNAME_TO_USER', payload: e.message })))
   }
 }

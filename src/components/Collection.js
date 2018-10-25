@@ -25,7 +25,7 @@ class Collection extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  handleSubmit = (event) => {
+  handleBGGUsernameSubmit = (event) => {
     event.preventDefault()
     this.props.addBGGUsernameToUser(this.props.user, this.state.bgg_username)
     this.setState({bgg_username: ''})
@@ -37,7 +37,7 @@ class Collection extends Component {
         <Menu borderless widths={2} style={{paddingRight: '10%'}}>
           <Menu.Item><h3>Have a Board Game Geek account? Enter your username</h3></Menu.Item>
       <Menu.Item>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleBGGUsernameSubmit}>
           <Form.Input name='bgg_username' placeholder='BGG username' value={this.state.bgg_username} onChange={this.handleChange}/>
           <Button>Submit</Button>
         </Form>
@@ -67,11 +67,17 @@ class Collection extends Component {
       )
     }
 
+    renderPlayerCountSearchBar = () => {
+      return (
+        <Input name='playerCount' type="number" placeholder='Enter Player Count' value={this.state.playerCount} onChange={this.handleChange} />
+      )
+    }
+
   render() {
     console.log(this.props);
     return (
       <React.Fragment>
-          <Input name='playerCount' type="number" placeholder='Enter Player Count' value={this.state.playerCount} onChange={this.handleChange} />
+        {this.props.user.bgg_username ? this.renderPlayerCountSearchBar() : null}
         <br/><br/>
         {this.props.fetchingBGGCollection ? this.renderDimmer() : this.renderGames()}
         {this.props.user.bgg_username ? null : this.checkForBGGUsername()}
