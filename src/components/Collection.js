@@ -11,13 +11,7 @@ class Collection extends Component {
 
     this.state = {
       bgg_username: '',
-      playerCount: ''
-    }
-  }
-
-  componentDidMount = () => {
-    if (this.props.user.bgg_username) {
-      this.props.fetchBGGCollection(this.props.user.bgg_username)
+      searchTerm: ''
     }
   }
 
@@ -56,7 +50,7 @@ class Collection extends Component {
     }
 
     filterGames = () => {
-      return this.props.games.filter(game => game.best_at.includes(this.state.playerCount))
+      return this.props.games.filter(game => game.title.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     }
 
     renderGames = () => {
@@ -67,9 +61,9 @@ class Collection extends Component {
       )
     }
 
-    renderPlayerCountSearchBar = () => {
+    renderSearchBar = () => {
       return (
-        <Input name='playerCount' type="number" placeholder='Enter Player Count' value={this.state.playerCount} onChange={this.handleChange} />
+        <Input name='searchTerm' placeholder='Search Games' value={this.state.searchTerm} onChange={this.handleChange} />
       )
     }
 
@@ -77,7 +71,7 @@ class Collection extends Component {
     console.log(this.props);
     return (
       <React.Fragment>
-        {this.props.user.bgg_username ? this.renderPlayerCountSearchBar() : null}
+        {this.props.user.bgg_username ? this.renderSearchBar() : null}
         <br/><br/>
         {this.props.fetchingBGGCollection ? this.renderDimmer() : this.renderGames()}
         {this.props.user.bgg_username ? null : this.checkForBGGUsername()}
@@ -93,6 +87,7 @@ const mapStateToProps = (state) => {
     authenticatingUser: state.userReducer.authenticatingUser,
     games: state.collectionReducer.games,
     fetchingBGGCollection: state.collectionReducer.fetchingBGGCollection,
+    collectionInState: state.collectionReducer.collectionInState,
   }
 }
 

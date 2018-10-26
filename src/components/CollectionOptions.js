@@ -5,10 +5,10 @@ import { Form, Button, Menu, Dimmer, Loader, Card, Input, Tab } from 'semantic-u
 import { addBGGUsernameToUser, fetchBGGCollection } from '../actions/collectionActions'
 import Boardgame from './Boardgame'
 import Collection from './Collection'
-import LoginForm from './LoginForm'
-import SignupForm from './SignupForm'
+import FindAGame from './FindAGame'
 
 const panes = [
+  {menuItem: "Find a Game", render: () => <FindAGame />},
   {menuItem: "My Full Collection", render: () => <Collection />}
 ]
 
@@ -18,6 +18,12 @@ class CollectionOptions extends Component {
 
     this.state = {
       bgg_username: '',
+    }
+  }
+
+  componentDidMount = () => {
+    if (this.props.user.bgg_username) {
+      this.props.fetchBGGCollection(this.props.user.bgg_username)
     }
   }
 

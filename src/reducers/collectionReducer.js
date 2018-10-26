@@ -1,6 +1,7 @@
 let initialState = {
   games: [],
-  fetchingBGGCollection: false
+  fetchingBGGCollection: false,
+  collectionInState: false
 }
 
 const collectionReducer = (state = initialState, action) => {
@@ -9,7 +10,7 @@ const collectionReducer = (state = initialState, action) => {
       return {...state, fetchingBGGCollection: true}
 
     case 'DONE_FETCHING_BGG_COLLECTION':
-      return {...state, fetchingBGGCollection: false}
+      return {...state, fetchingBGGCollection: false, collectionInState: true}
 
     case 'ADD_COLLECTION_TO_STATE':
       return {...state, games: action.payload}
