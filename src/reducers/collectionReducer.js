@@ -1,7 +1,8 @@
 let initialState = {
   games: [],
   fetchingBGGCollection: false,
-  collectionInState: false
+  collectionInState: false,
+  collectionFilterParams: {playerCount: '', playTime: ''}
 }
 
 const collectionReducer = (state = initialState, action) => {
@@ -17,6 +18,9 @@ const collectionReducer = (state = initialState, action) => {
 
     case 'ADD_GAME_TO_STATE':
       return {...state, games: [...state.games, action.payload], fetchingBGGCollection: false}
+
+    case 'SET_COLLECTION_FILTER_PARAMS':
+      return {...state, collectionFilterParams: action.payload}
 
     case 'LOG_OUT':
       return {...state, games: []}

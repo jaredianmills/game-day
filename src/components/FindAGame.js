@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Menu, Form, Button } from 'semantic-ui-react'
 import FindAGameResults from './FindAGameResults'
+import { setCollectionFilterParams } from '../actions/collectionActions'
 
 class FindAGame extends Component {
   constructor(props) {
@@ -28,6 +29,8 @@ class FindAGame extends Component {
 
   handleEnterPlayTime = (event) => {
     event.preventDefault()
+    const params = {playerCount: this.state.playerCount, playTime: this.state.playTime}
+    this.props.setCollectionFilterParams(params)
     return this.setState({...this.state, displayPlayTimeForm: false, displayResults: true})
 
   }
@@ -55,7 +58,7 @@ class FindAGame extends Component {
           <Menu.Item><h3>Enter Play Time</h3></Menu.Item>
           <Menu.Item position='right'>
             <Form onSubmit={this.handleEnterPlayTime}>
-              <Form.Input name='playerCount' type='number' placeholder='Enter Play Time (minutes)' value={this.state.playTime} onChange={this.handleChange}/>
+              <Form.Input name='playTime' type='number' placeholder='Enter Play Time (minutes)' value={this.state.playTime} onChange={this.handleChange}/>
               <Button>Enter</Button>
             </Form>
           </Menu.Item>
@@ -82,4 +85,10 @@ class FindAGame extends Component {
   }
 }
 
-export default connect()(FindAGame)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCollectionFilterParams: (params) => dispatch(setCollectionFilterParams(params))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(FindAGame)

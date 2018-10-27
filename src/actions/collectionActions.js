@@ -62,3 +62,7 @@ const fetchSingleGame = (boardgame) => {
         .then(game => dispatch({type: 'ADD_GAME_TO_STATE', payload: game}))
     }
 }
+
+export const setCollectionFilterParams = (params) => {
+  return {type: 'SET_COLLECTION_FILTER_PARAMS', payload: params}
+}
