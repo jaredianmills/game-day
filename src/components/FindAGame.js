@@ -55,7 +55,7 @@ class FindAGame extends Component {
     return (
       <div style={{width: '90%', marginLeft: '5%', height: '40%'}}>
         <Menu borderless widths={2} style={{paddingRight: '10%'}}>
-          <Menu.Item><h3>Enter Play Time</h3></Menu.Item>
+          <Menu.Item><h3>Enter Play Time (minutes)</h3></Menu.Item>
           <Menu.Item position='right'>
             <Form onSubmit={this.handleEnterPlayTime}>
               <Form.Input name='playTime' type='number' placeholder='Enter Play Time (minutes)' value={this.state.playTime} onChange={this.handleChange}/>
@@ -67,9 +67,22 @@ class FindAGame extends Component {
     )
   }
 
+  searchAgain = () => {
+    this.setState({
+      playerCount: '',
+      playTime: '',
+      displayPlayerCountForm: true,
+      displayPlayTimeForm: false,
+      displayResults: false,
+    })
+  }
+
   renderResults = () => {
     return (
-        <FindAGameResults />
+        <React.Fragment>
+          <Button onClick={this.searchAgain}>Search Again</Button>
+          <FindAGameResults />
+        </React.Fragment>
     )
   }
 
