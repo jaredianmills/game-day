@@ -6,10 +6,12 @@ import { addBGGUsernameToUser, fetchBGGCollection } from '../actions/collectionA
 import Boardgame from './Boardgame'
 import Collection from './Collection'
 import FindAGame from './FindAGame'
+import SearchGames from './SearchGames'
 
 const panes = [
   {menuItem: "Find a Game", render: () => <FindAGame />},
-  {menuItem: "My Full Collection", render: () => <Collection />}
+  {menuItem: "My Full Collection", render: () => <Collection />},
+  {menuItem: "Search Games", render: () => <SearchGames />}
 ]
 
 class CollectionOptions extends Component {
