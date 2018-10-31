@@ -45,8 +45,6 @@ class SearchGames extends Component {
   }
 
   render() {
-    console.log('props are: ', this.props);
-    console.log('state is: ', this.state);
     return (
       <React.Fragment>
         {this.props.searchingForGames ? this.renderDimmer() : this.renderSearchBarAndGames()}

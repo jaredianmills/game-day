@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Card } from 'semantic-ui-react'
 import Boardgame from './Boardgame'
-import FindAGame from './FindAGame'
 
 const FindAGameResults = (props) => {
   console.log(props);

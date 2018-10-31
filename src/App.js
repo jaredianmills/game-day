@@ -4,7 +4,6 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import NotFound from './components/NotFound'
 import LoginOrSignup from './components/LoginOrSignup'
-import Collection from './components/Collection'
 import CollectionOptions from './components/CollectionOptions'
 
 class App extends Component {

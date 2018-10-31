@@ -17,7 +17,7 @@ const Boardgame = (props) => {
           Max Players: {props.boardgame.maxplayers}
         </Card.Meta>
         <Card.Meta>
-          Best At: {props.boardgame.best_at} players
+          Best At: {props.boardgame.best_at ? `${props.boardgame.best_at} players` : `N/A`}
         </Card.Meta>
         <Card.Meta>
           Playtime: {props.boardgame.minplaytime === props.boardgame.maxplaytime ? props.boardgame.minplaytime : `${props.boardgame.minplaytime} - ${props.boardgame.maxplaytime}`} minutes

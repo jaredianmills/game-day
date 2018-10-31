@@ -24,7 +24,6 @@ class FindAGame extends Component {
   handleEnterPlayerCount = (event) => {
     event.preventDefault()
     return this.setState({...this.state, displayPlayerCountForm: false, displayPlayTimeForm: true})
-    console.log(this.state);
   }
 
   handleEnterPlayTime = (event) => {
