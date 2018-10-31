@@ -62,7 +62,6 @@ export const createUser = (user) => {
         }
       })
       .then(JSONResponse => {
-        console.log(JSONResponse)
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
       })
@@ -72,4 +71,24 @@ export const createUser = (user) => {
 
 export const logOut = () => {
   return {type: 'LOG_OUT'}
+}
+
+export const editUser = (user) => {
+  return (dispatch) => {
+    console.log('updating...');
+    dispatch({type: 'AUTHENTICATING_USER'})
+    let configObj = {
+      method: 'PATCH',
+      headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+    },
+    body: JSON.stringify({ user })
+    }
+
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/${user.id}`, configObj)
+    .then(response => response.json())
+    .then(user => dispatch({type: 'UPDATED_USER', payload: user}))
+  }
 }

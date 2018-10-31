@@ -19,6 +19,9 @@ const userReducer = (state = initialState, action) => {
     case 'ADD_BGG_USERNAME_TO_USER_IN_STATE':
       return {...state, user: action.payload}
 
+    case 'UPDATED_USER':
+      return {...state, user: action.payload, authenticatingUser: false}
+
     case 'LOG_OUT':
       localStorage.clear()
       return {...state, user: null, loggedIn: false}

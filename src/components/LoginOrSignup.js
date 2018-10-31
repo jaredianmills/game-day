@@ -33,7 +33,7 @@ class LoginOrSignup extends Component {
   renderDimmer = () => {
       return (
         <Dimmer active inverted>
-          <Loader size='large'>Loggin In User</Loader>
+          <Loader size='large'>Logging In User</Loader>
         </Dimmer>
       )
     }

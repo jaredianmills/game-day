@@ -17,11 +17,6 @@ const Navbar = (props) => {
         </Menu.Item>
         {props.user ?
           <React.Fragment>
-            {/* <Menu.Item position='right' style={{marginRight: '10%'}}>
-              <h1>
-                Welcome {props.user.username}
-              </h1>
-            </Menu.Item> */}
             <Menu.Item position='right'>
               <Button onClick={props.logOut}>
                 Log Out

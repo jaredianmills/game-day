@@ -6,12 +6,7 @@ import { addBGGUsernameToUser, fetchBGGCollection } from '../actions/collectionA
 import Collection from './Collection'
 import FindAGame from './FindAGame'
 import SearchGames from './SearchGames'
-
-const panes = [
-  {menuItem: "Find a Game", render: () => <FindAGame />},
-  {menuItem: "My Full Collection", render: () => <Collection />},
-  {menuItem: "Search Games", render: () => <SearchGames />}
-]
+import EditProfile from './EditProfile'
 
 class CollectionOptions extends Component {
   constructor(props) {
@@ -22,6 +17,13 @@ class CollectionOptions extends Component {
     }
   }
 
+  panes = [
+    {menuItem: "Find a Game", render: () => <FindAGame />},
+    {menuItem: `${this.props.user.username}'s Collection`, render: () => <Collection />},
+    {menuItem: "Search Games", render: () => <SearchGames />},
+    {menuItem: "Edit Profile", render: () => <EditProfile />},
+  ]
+
   componentDidMount = () => {
     if (this.props.user.bgg_username) {
       this.props.fetchBGGCollection(this.props.user.bgg_username)
@@ -31,7 +33,7 @@ class CollectionOptions extends Component {
   render() {
     return (
       <React.Fragment>
-        <Tab panes={panes} menu={{borderless: true, tabular: false, color: 'blue'}} />
+        <Tab panes={this.panes} menu={{borderless: true, tabular: false, color: 'blue'}} />
       </React.Fragment>
     )
   }
