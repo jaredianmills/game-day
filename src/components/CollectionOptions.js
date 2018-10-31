@@ -26,6 +26,14 @@ class CollectionOptions extends Component {
 
   componentDidMount = () => {
     if (this.props.user.bgg_username) {
+      this.setState({bgg_username: this.props.user.bgg_username})
+      this.props.fetchBGGCollection(this.props.user.bgg_username)
+    }
+  }
+
+  componentDidUpdate = () => {
+    if (this.props.user.bgg_username !== this.state.bgg_username) {
+      this.setState({bgg_username: this.props.user.bgg_username})
       this.props.fetchBGGCollection(this.props.user.bgg_username)
     }
   }

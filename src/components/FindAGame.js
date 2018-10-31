@@ -86,7 +86,6 @@ class FindAGame extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <React.Fragment>
         {this.state.displayPlayerCountForm ? this.renderPlayerCountForm() : null}

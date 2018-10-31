@@ -38,10 +38,12 @@ export const fetchBGGCollection = (bgg_username) => {
       }
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/collections/search`, configObj)
       .then(response => response.json())
-      // .then(games => console.log(games))
-      // .then(collection => dispatch({type: 'ADD_COLLECTION_TO_STATE', payload: collection}))
       .then(games => {
-        games.forEach(game => dispatch(fetchSingleGame(game)))
+        if (!games.error) {
+          games.forEach(game => dispatch(fetchSingleGame(game)))
+        } else {
+          dispatch({type: 'COLLECTION_NOT_FOUND'})
+        }
       })
   }
 }

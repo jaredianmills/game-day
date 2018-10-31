@@ -22,6 +22,9 @@ const collectionReducer = (state = initialState, action) => {
     case 'SET_COLLECTION_FILTER_PARAMS':
       return {...state, collectionFilterParams: action.payload}
 
+    case 'COLLECTION_NOT_FOUND':
+      return {...state, fetchingBGGCollection: false, games: []}
+
     case 'LOG_OUT':
       return {...state, games: []}
 
