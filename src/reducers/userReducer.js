@@ -2,7 +2,8 @@ let initialState = {
   user: null,
   loggedIn: false,
   authenticatingUser: false,
-  userError: null
+  userError: null,
+  updateError: null,
 }
 
 const userReducer = (state = initialState, action) => {
@@ -21,6 +22,9 @@ const userReducer = (state = initialState, action) => {
 
     case 'UPDATED_USER':
       return {...state, user: action.payload, authenticatingUser: false}
+
+    case 'ERROR_UPDATING_USER':
+      return {...state, authenticatingUser: false, updateError: action.payload}
 
     case 'LOG_OUT':
       localStorage.clear()

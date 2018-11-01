@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Menu } from 'semantic-ui-react'
+import { Button, Form, Menu, Message } from 'semantic-ui-react'
 import { editUser } from '../actions/userActions'
 
 class EditProfile extends Component {
@@ -22,10 +22,23 @@ class EditProfile extends Component {
     this.props.editUser(this.state)
   }
 
+  renderErrorMessage = () => {
+    return (
+      <Message negative>
+        <Message.Header>
+          There was an error processing your request
+        </Message.Header>
+        <p>
+          {this.props.updateError}
+        </p>
+      </Message>
+    )
+  }
+
   render() {
-    console.log(this.state);
     return (
       <div style={{width: '90%', marginLeft: '5%', height: '40%'}}>
+        {this.props.updateError ? this.renderErrorMessage() : null}
         <Menu borderless widths={2} style={{paddingRight: '10%'}}>
           <Menu.Item><h3>Edit Your Profile</h3></Menu.Item>
           <Menu.Item position='right'>
@@ -41,6 +54,7 @@ class EditProfile extends Component {
               <Button>Submit</Button>
             </Form>
           </Menu.Item>
+          <br/>
         </Menu>
     </div>
     )
@@ -52,6 +66,7 @@ const mapStateToProps = (state) => {
     id: state.userReducer.user.id,
     username: state.userReducer.user.username,
     bgg_username: state.userReducer.user.bgg_username,
+    updateError: state.userReducer.updateError
   }
 }
 

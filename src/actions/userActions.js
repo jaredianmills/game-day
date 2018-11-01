@@ -89,6 +89,13 @@ export const editUser = (user) => {
 
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/${user.id}`, configObj)
     .then(response => response.json())
-    .then(user => dispatch({type: 'UPDATED_USER', payload: user}))
+    .then(user => {
+      if (user.error) {
+        throw user
+      } else {
+        return dispatch({type: 'UPDATED_USER', payload: user})
+      }
+    })
+    .catch(r => dispatch({type: 'ERROR_UPDATING_USER', payload: r.error}))
   }
 }
