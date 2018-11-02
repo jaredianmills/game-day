@@ -28,7 +28,7 @@ class SearchGames extends Component {
   renderGames = () => {
     return (
         <Card.Group>
-          {this.props.searchResults.map(game => <Boardgame key={game.objectid} boardgame={game} />)}
+          {this.props.searchResults.map(game => <Boardgame key={game.objectid} boardgame={game} renderAddToCollection={true} />)}
         </Card.Group>
     )
   }

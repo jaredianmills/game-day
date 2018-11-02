@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Button } from 'semantic-ui-react'
 
 
 const Boardgame = (props) => {
@@ -23,7 +23,18 @@ const Boardgame = (props) => {
           Playtime: {props.boardgame.minplaytime === props.boardgame.maxplaytime ? props.boardgame.minplaytime : `${props.boardgame.minplaytime} - ${props.boardgame.maxplaytime}`} minutes
         </Card.Meta>
       </Card.Content>
+      {props.renderAddToCollection ? renderAddToCollectionButton() : null}
     </Card>
+  )
+}
+
+const renderAddToCollectionButton = () => {
+  return (
+    <Card.Content extra>
+      <Button>
+        Add To Collection
+      </Button>
+    </Card.Content>
   )
 }
 
