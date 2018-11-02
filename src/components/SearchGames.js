@@ -13,6 +13,10 @@ class SearchGames extends Component {
     }
   }
 
+  componentDidMount = () => {
+    this.props.resetGameSearchResults()
+  }
+
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value})
   }
@@ -65,6 +69,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     searchGames: (searchTerm) => dispatch(searchGames(searchTerm)),
+    resetGameSearchResults: () => dispatch({type: 'SET_SEARCH_RESULTS', payload: []})
   }
 }
 
