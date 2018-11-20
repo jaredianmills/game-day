@@ -20,7 +20,7 @@ class CollectionOptions extends Component {
   panes = [
     {menuItem: "Find a Game", render: () => <FindAGame />},
     {menuItem: `${this.props.user.username}'s Collection`, render: () => <Collection />},
-    {menuItem: "Search Games", render: () => <SearchGames />},
+    {menuItem: "Add Games to Collection", render: () => <SearchGames />},
     {menuItem: "Edit Profile", render: () => <EditProfile />},
   ]
 

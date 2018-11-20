@@ -49,7 +49,7 @@ class EditProfile extends Component {
               </Form.Field>
               <Form.Field>
                 <label>Boardgame Geek Username</label>
-                <Form.Input name='bgg_username' placeholder='Boardgame Geek Username' value={this.state.bgg_username} onChange={this.handleChange}/>
+                <Form.Input name='bgg_username' placeholder='BGG Username' value={this.state.bgg_username} onChange={this.handleChange}/>
               </Form.Field>
               <Button>Submit</Button>
             </Form>

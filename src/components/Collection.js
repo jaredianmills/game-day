@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import withAuth from '../hocs/withAuth'
-import { Form, Button, Menu, Dimmer, Loader, Card, Input } from 'semantic-ui-react'
+import { Form, Button, Menu, Message, Dimmer, Loader, Card, Input } from 'semantic-ui-react'
 import { addBGGUsernameToUser, fetchBGGCollection } from '../actions/collectionActions'
 import Boardgame from './Boardgame'
 
@@ -25,20 +25,16 @@ class Collection extends Component {
     this.setState({bgg_username: ''})
   }
 
-  checkForBGGUsername = () => {
+  noGamesInCollection = () => {
     return (
-      <div style={{width: '90%', marginLeft: '5%', height: '40%'}}>
-        <Menu borderless widths={2} style={{paddingRight: '10%'}}>
-          <Menu.Item><h3>Have a Board Game Geek account? Enter your username</h3></Menu.Item>
-      <Menu.Item>
-        <Form onSubmit={this.handleBGGUsernameSubmit}>
-          <Form.Input name='bgg_username' placeholder='BGG username' value={this.state.bgg_username} onChange={this.handleChange}/>
-          <Button>Submit</Button>
-        </Form>
-      </Menu.Item>
-      </Menu>
-    </div>
-    )
+      <div style={{width: '90%', marginLeft: '15%', height: '40%', paddingRight: '20%', textAlign: 'center'}}>
+        <Message size='large'>
+          <Message.Header>There are no games currently in your collection.</Message.Header>
+          <Message.Content>If you have a Boardgame Geek username, add the username to your profile</Message.Content>
+          <Message.Content>Or use the Add Games to Collection tab above</Message.Content>
+        </Message>
+      </div>
+      )
   }
 
   renderDimmer = () => {
@@ -71,10 +67,10 @@ class Collection extends Component {
     console.log(this.props);
     return (
       <React.Fragment>
-        {this.props.user.bgg_username ? this.renderSearchBar() : null}
+        {this.props.games.length > 0 ? this.renderSearchBar() : null}
         <br/><br/>
         {this.props.fetchingBGGCollection ? this.renderDimmer() : this.renderGames()}
-        {this.props.user.bgg_username ? null : this.checkForBGGUsername()}
+        {this.props.games.length > 0 ? null : this.noGamesInCollection()}
       </React.Fragment>
     )
   }
