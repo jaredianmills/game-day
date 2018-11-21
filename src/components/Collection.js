@@ -64,7 +64,6 @@ class Collection extends Component {
     }
 
   render() {
-    console.log(this.props);
     return (
       <React.Fragment>
         {this.props.games.length > 0 ? this.renderSearchBar() : null}

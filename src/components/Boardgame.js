@@ -1,5 +1,7 @@
 import React from 'react'
 import { Card, Image, Button } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { addBoardgameToCollection } from '../actions/gameActions.js'
 
 
 const Boardgame = (props) => {
@@ -23,19 +25,33 @@ const Boardgame = (props) => {
           Playtime: {props.boardgame.minplaytime === props.boardgame.maxplaytime ? props.boardgame.minplaytime : `${props.boardgame.minplaytime} - ${props.boardgame.maxplaytime}`} minutes
         </Card.Meta>
       </Card.Content>
-      {props.renderAddToCollection ? renderAddToCollectionButton() : null}
+      {props.renderAddToCollection ? renderAddToCollectionButton(props) : null}
     </Card>
   )
 }
 
-const renderAddToCollectionButton = () => {
+const renderAddToCollectionButton = (props) => {
+  const boardgame = props.boardgame
+  const user_id = props.user.id
   return (
     <Card.Content extra>
-      <Button>
+      <Button onClick={() => props.addBoardgameToCollection(boardgame, user_id)}>
         Add To Collection
       </Button>
     </Card.Content>
   )
 }
 
-export default Boardgame
+const mapStateToProps = (state) => {
+  return {
+    user: state.userReducer.user
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addBoardgameToCollection: (boardgame, user_id) => dispatch(addBoardgameToCollection(boardgame, user_id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Boardgame)
