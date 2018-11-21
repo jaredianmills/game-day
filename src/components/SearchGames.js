@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button, Input, Card, Dimmer, Loader } from 'semantic-ui-react'
+import { Card, Dimmer, Loader, Form } from 'semantic-ui-react'
 import { searchGames } from '../actions/gameActions.js'
 import Boardgame from './Boardgame'
 
@@ -40,8 +40,12 @@ class SearchGames extends Component {
   renderSearchBarAndGames = () => {
     return (
       <React.Fragment>
-        <Input name='searchTerm' placeholder='Game Title' value={this.state.searchTerm} onChange={this.handleChange}/>
-        <Button onClick={() => this.props.searchGames(this.state.searchTerm)}>Submit</Button>
+        <Form onSubmit={() => this.props.searchGames(this.state.searchTerm)}>
+          <Form.Group>
+            <Form.Input name='searchTerm' placeholder='Game Title' value={this.state.searchTerm} onChange={this.handleChange}/>
+            <Form.Button content="Submit" />
+          </Form.Group>
+        </Form>
         <br/><br/>
         {this.renderGames()}
       </React.Fragment>
