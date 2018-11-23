@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { addBoardgameToCollection } from '../actions/gameActions.js'
+import { addBoardgameToCollectionBackend } from '../actions/gameActions.js'
 
 
 const Boardgame = (props) => {
@@ -33,24 +33,36 @@ const Boardgame = (props) => {
 const renderAddToCollectionButton = (props) => {
   const boardgame = props.boardgame
   const user_id = props.user.id
-  return (
-    <Card.Content extra>
-      <Button onClick={() => props.addBoardgameToCollection(boardgame, user_id)}>
-        Add To Collection
-      </Button>
-    </Card.Content>
-  )
+
+  if (props.boardgames.find(game => game.objectid === boardgame.objectid)) {
+    return (
+      <Card.Content extra style={{textAlign: 'center'}}>
+        <Button color='red'>
+          You Own this Game
+        </Button>
+      </Card.Content>
+    )
+  } else {
+    return (
+      <Card.Content extra style={{textAlign: 'center'}}>
+        <Button color='blue' onClick={() => props.addBoardgameToCollectionBackend(boardgame, user_id)}>
+          Add To Collection
+        </Button>
+      </Card.Content>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    boardgames: state.collectionReducer.games
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addBoardgameToCollection: (boardgame, user_id) => dispatch(addBoardgameToCollection(boardgame, user_id))
+    addBoardgameToCollectionBackend: (boardgame, user_id) => dispatch(addBoardgameToCollectionBackend(boardgame, user_id))
   }
 }
 
