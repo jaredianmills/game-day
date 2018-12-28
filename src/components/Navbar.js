@@ -19,12 +19,12 @@ const Navbar = (props) => {
                 </h1>
               </Grid.Column>
               {props.user ?
-              <Grid.Column style={{textAlign: 'center', marginTop: '2%'}}>
+              <Grid.Column style={{textAlign: 'center', marginTop: '1.5%'}}>
                     <Button onClick={props.logOut}>
                       Log Out
                     </Button>
             </Grid.Column>
-            : null}
+            : <Grid.Column></Grid.Column>}
           {/* </Grid.Row> */}
         </Grid>
         </Segment>
