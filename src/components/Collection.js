@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import withAuth from '../hocs/withAuth'
-import { Form, Button, Menu, Message, Dimmer, Loader, Card, Input, Grid, Segment } from 'semantic-ui-react'
+import { Message, Dimmer, Loader, Input, Grid } from 'semantic-ui-react'
 import { addBGGUsernameToUser, fetchBGGCollection } from '../actions/collectionActions'
 import Boardgame from './Boardgame'
 
@@ -62,26 +62,6 @@ class Collection extends Component {
                 } )}
             </Grid.Row>
 
-            <Grid.Row columns={5} only='widescreen'>
-                {this.filterGames().map(game => {
-                  return (
-                    <Grid.Column key={game.objectid}>
-                      <Boardgame boardgame={game} />
-                    </Grid.Column>
-                  )
-                } )}
-            </Grid.Row>
-
-            <Grid.Row columns={5} only='large screen'>
-                {this.filterGames().map(game => {
-                  return (
-                    <Grid.Column key={game.objectid}>
-                      <Boardgame boardgame={game} />
-                    </Grid.Column>
-                  )
-                } )}
-            </Grid.Row>
-
             <Grid.Row columns={2} only='mobile'>
                 {this.filterGames().map(game => {
                   return (
@@ -101,9 +81,6 @@ class Collection extends Component {
                   )
                 } )}
             </Grid.Row>
-
-
-
           </Grid>
       )
     }

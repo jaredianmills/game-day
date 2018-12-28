@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Segment, Menu, Image, Button, Grid } from 'semantic-ui-react'
+import { Segment, Image, Button, Grid } from 'semantic-ui-react'
 import { logOut } from '../actions/userActions'
 
 let logo = require(`../images/goboard.jpeg`)
@@ -9,7 +9,6 @@ const Navbar = (props) => {
   return (
         <Segment inverted color='blue'>
           <Grid padded relaxed columns='equal'>
-            {/* <Grid.Row centered> */}
               <Grid.Column>
                 <Image src={logo} rounded bordered size='tiny' verticalAlign='middle'/>
               </Grid.Column>
@@ -25,7 +24,6 @@ const Navbar = (props) => {
                     </Button>
             </Grid.Column>
             : <Grid.Column></Grid.Column>}
-          {/* </Grid.Row> */}
         </Grid>
         </Segment>
   )

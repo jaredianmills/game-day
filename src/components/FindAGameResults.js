@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import Boardgame from './Boardgame'
 
 const FindAGameResults = (props) => {
-  console.log(props);
   return (
     <React.Fragment>
       {filterGames(props.games, props.collectionFilterParams)}
@@ -46,14 +45,70 @@ const displayFilteredGames = (bestAtGames, playableAtCountGames) => {
   return (
     <React.Fragment>
       <h1>Games Best at Your Player Count:</h1>
-      <Card.Group>
-        {bestAtGames.map(game => <Boardgame key={game.objectid} boardgame={game}/>)}
-      </Card.Group>
+      <Grid>
+        <Grid.Row columns={5} only='computer'>
+            {bestAtGames.map(game => {
+              return (
+                <Grid.Column key={game.objectid}>
+                  <Boardgame boardgame={game} />
+                </Grid.Column>
+              )
+            } )}
+        </Grid.Row>
+
+        <Grid.Row columns={2} only='mobile'>
+            {bestAtGames.map(game => {
+              return (
+                <Grid.Column key={game.objectid}>
+                  <Boardgame boardgame={game} />
+                </Grid.Column>
+              )
+            } )}
+        </Grid.Row>
+
+        <Grid.Row columns={2} only='tablet'>
+            {bestAtGames.map(game => {
+              return (
+                <Grid.Column key={game.objectid}>
+                  <Boardgame boardgame={game} />
+                </Grid.Column>
+              )
+            } )}
+        </Grid.Row>
+      </Grid>
 
       <h1>Games Playable at Your Player Count:</h1>
-      <Card.Group>
-        {playableAtCountGames.map(game => <Boardgame key={game.objectid} boardgame={game}/>)}
-      </Card.Group>
+      <Grid>
+        <Grid.Row columns={5} only='computer'>
+            {playableAtCountGames.map(game => {
+              return (
+                <Grid.Column key={game.objectid}>
+                  <Boardgame boardgame={game} />
+                </Grid.Column>
+              )
+            } )}
+        </Grid.Row>
+
+        <Grid.Row columns={2} only='mobile'>
+            {playableAtCountGames.map(game => {
+              return (
+                <Grid.Column key={game.objectid}>
+                  <Boardgame boardgame={game} />
+                </Grid.Column>
+              )
+            } )}
+        </Grid.Row>
+
+        <Grid.Row columns={2} only='tablet'>
+            {playableAtCountGames.map(game => {
+              return (
+                <Grid.Column key={game.objectid}>
+                  <Boardgame boardgame={game} />
+                </Grid.Column>
+              )
+            } )}
+        </Grid.Row>
+      </Grid>
     </React.Fragment>
   )
 }
