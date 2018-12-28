@@ -10,14 +10,14 @@ class App extends Component {
   render() {
     console.log();
     return (
-      <React.Fragment>
+      <div style={{display: 'block', width: '100%'}}>
         <Navbar />
         <Switch>
           <Route exact path="/" component={CollectionOptions} />
           <Route exact path="/login" component={LoginOrSignup} />
           <Route component={NotFound} />
         </Switch>
-      </React.Fragment>
+      </div>
     )
   }
 }

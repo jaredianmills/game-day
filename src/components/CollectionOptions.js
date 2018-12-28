@@ -40,9 +40,9 @@ class CollectionOptions extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <Tab panes={this.panes} menu={{borderless: true, tabular: false, color: 'blue'}} />
-      </React.Fragment>
+      <div>
+        <Tab panes={this.panes} menu={{borderless: true, color: 'blue'}} style={{width: '100%'}} />
+      </div>
     )
   }
 

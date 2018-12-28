@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import withAuth from '../hocs/withAuth'
-import { Form, Button, Menu, Message, Dimmer, Loader, Card, Input } from 'semantic-ui-react'
+import { Form, Button, Menu, Message, Dimmer, Loader, Card, Input, Grid, Segment } from 'semantic-ui-react'
 import { addBGGUsernameToUser, fetchBGGCollection } from '../actions/collectionActions'
 import Boardgame from './Boardgame'
 
@@ -51,9 +51,60 @@ class Collection extends Component {
 
     renderGames = () => {
       return (
-          <Card.Group>
-            {this.filterGames().map(game => <Boardgame key={game.objectid} boardgame={game} />)}
-          </Card.Group>
+          <Grid>
+            <Grid.Row columns={5} only='computer'>
+                {this.filterGames().map(game => {
+                  return (
+                    <Grid.Column key={game.objectid}>
+                      <Boardgame boardgame={game} />
+                    </Grid.Column>
+                  )
+                } )}
+            </Grid.Row>
+
+            <Grid.Row columns={5} only='widescreen'>
+                {this.filterGames().map(game => {
+                  return (
+                    <Grid.Column key={game.objectid}>
+                      <Boardgame boardgame={game} />
+                    </Grid.Column>
+                  )
+                } )}
+            </Grid.Row>
+
+            <Grid.Row columns={5} only='large screen'>
+                {this.filterGames().map(game => {
+                  return (
+                    <Grid.Column key={game.objectid}>
+                      <Boardgame boardgame={game} />
+                    </Grid.Column>
+                  )
+                } )}
+            </Grid.Row>
+
+            <Grid.Row columns={2} only='mobile'>
+                {this.filterGames().map(game => {
+                  return (
+                    <Grid.Column key={game.objectid}>
+                      <Boardgame boardgame={game} />
+                    </Grid.Column>
+                  )
+                } )}
+            </Grid.Row>
+
+            <Grid.Row columns={2} only='tablet'>
+                {this.filterGames().map(game => {
+                  return (
+                    <Grid.Column key={game.objectid}>
+                      <Boardgame boardgame={game} />
+                    </Grid.Column>
+                  )
+                } )}
+            </Grid.Row>
+
+
+
+          </Grid>
       )
     }
 

@@ -7,35 +7,27 @@ let logo = require(`../images/goboard.jpeg`)
 
 const Navbar = (props) => {
   return (
-    <Segment vertical style={{height: '100%'}}>
-      {/* <Menu borderless style={{border: 'none', boxShadow: 'none'}}> */}
-        {/* <Menu.Item> */}
-        <Grid columns='equal'>
-          <Grid.Row>
+        <Grid padded relaxed centered columns={2}>
+          {/* <Grid.Row centered> */}
+            {/* <Grid.Column>
+              <Image circular style={{width: '20%', height: 'auto', marginLeft: '5%'}} src={logo}/>
+            </Grid.Column> */}
             <Grid.Column>
-              <Image circular style={{width: '20%', height: 'auto'}} src={logo}/>
+              <h1 style={{fontSize: '200%', paddingTop: '7%', textAlign: 'center'}}>
+                Game Day
+              </h1>
             </Grid.Column>
-        {/* </Menu.Item> */}
-        {/* <Menu.Item style={{textAlign: 'center', float: 'right'}}> */}
-        <Grid.Column>
-          <h1 style={{fontSize: '200%', marginLeft: '20%', paddingTop: '6%'}}>Game Day</h1>
-        </Grid.Column>
-        {/* </Menu.Item> */}
-        <Grid.Column>
-        {props.user ?
-          <React.Fragment>
-            <Menu.Item style={{paddingTop: '7%'}}>
-              <Button onClick={props.logOut}>
-                Log Out
-              </Button>
-            </Menu.Item>
-          </React.Fragment>
-        : null}
-      </Grid.Column>
-      </Grid.Row>
+            <Grid.Column float='right'>
+            {props.user ?
+              <div style={{paddingTop: '7%', paddingLeft: '50%'}}>
+                  <Button onClick={props.logOut}>
+                    Log Out
+                  </Button>
+              </div>
+            : null}
+          </Grid.Column>
+        {/* </Grid.Row> */}
       </Grid>
-      {/* </Menu> */}
-    </Segment>
   )
 }
 
