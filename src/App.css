@@ -36,3 +36,9 @@
   width: 100%;
   height: 5%;
 }
+
+.wrapped{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

@@ -7,27 +7,27 @@ let logo = require(`../images/goboard.jpeg`)
 
 const Navbar = (props) => {
   return (
-        <Grid padded relaxed centered columns={2}>
-          {/* <Grid.Row centered> */}
-            {/* <Grid.Column>
-              <Image circular style={{width: '20%', height: 'auto', marginLeft: '5%'}} src={logo}/>
-            </Grid.Column> */}
-            <Grid.Column>
-              <h1 style={{fontSize: '200%', paddingTop: '7%', textAlign: 'center'}}>
-                Game Day
-              </h1>
+        <Segment inverted color='blue'>
+          <Grid padded relaxed columns='equal'>
+            {/* <Grid.Row centered> */}
+              <Grid.Column>
+                <Image src={logo} rounded bordered size='tiny' verticalAlign='middle'/>
+              </Grid.Column>
+              <Grid.Column style={{marginTop: '1%', textAlign: 'center', fontSize: '200%'}}>
+                <h1 style={{textShadow: '2px 2px #000'}}>
+                  Game Day
+                </h1>
+              </Grid.Column>
+              {props.user ?
+              <Grid.Column style={{textAlign: 'center', marginTop: '2%'}}>
+                    <Button onClick={props.logOut}>
+                      Log Out
+                    </Button>
             </Grid.Column>
-            <Grid.Column float='right'>
-            {props.user ?
-              <div style={{paddingTop: '7%', paddingLeft: '50%'}}>
-                  <Button onClick={props.logOut}>
-                    Log Out
-                  </Button>
-              </div>
             : null}
-          </Grid.Column>
-        {/* </Grid.Row> */}
-      </Grid>
+          {/* </Grid.Row> */}
+        </Grid>
+        </Segment>
   )
 }
 

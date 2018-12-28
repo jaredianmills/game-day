@@ -41,7 +41,7 @@ class CollectionOptions extends Component {
   render() {
     return (
       <div>
-        <Tab panes={this.panes} menu={{borderless: true, color: 'blue'}} style={{width: '100%'}} />
+        <Tab menu={{tabular: false, borderless: true, color: 'blue', className: 'wrapped', secondary: true, pointing: true}} panes={this.panes} />
       </div>
     )
   }
