@@ -19,7 +19,7 @@ const Boardgame = (props) => {
           Max Players: {props.boardgame.maxplayers}
         </Card.Meta>
         <Card.Meta>
-          Best At: {props.boardgame.best_at ? `${props.boardgame.best_at} players` : `N/A`}
+          Best At: {props.boardgame.best_at ? formatBestAtPlayerCount(props.boardgame.best_at) : `N/A`}
         </Card.Meta>
         <Card.Meta>
           Playtime: {props.boardgame.minplaytime === props.boardgame.maxplaytime ? props.boardgame.minplaytime : `${props.boardgame.minplaytime} - ${props.boardgame.maxplaytime}`} minutes
@@ -28,6 +28,26 @@ const Boardgame = (props) => {
       {props.renderAddToCollection ? renderAddToCollectionButton(props) : null}
     </Card>
   )
+}
+
+const formatBestAtPlayerCount = (bestAt) => {
+  if (bestAt.length < 2) {
+    return `${bestAt[0]} players`
+  }
+
+  if (parseInt(bestAt[0]) + bestAt.length - 1 === parseInt(bestAt[bestAt.length - 1])) {
+    return `${bestAt[0]} - ${bestAt[bestAt.length - 1]} players`
+  }
+
+  let bestAtPlayers = ''
+  bestAt.forEach((count, index) => {
+    if (index !== bestAt.length - 1) {
+      bestAtPlayers += `${count}, `
+    } else {
+      bestAtPlayers += count
+    }
+  })
+  return `${bestAtPlayers} players`
 }
 
 const renderAddToCollectionButton = (props) => {

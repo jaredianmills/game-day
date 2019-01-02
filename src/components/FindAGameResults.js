@@ -16,7 +16,8 @@ const filterGames = (games, params) => {
   let playableAtCountGames = []
 
   games.forEach(game => {
-    let bestAt = parseInt(game.best_at)
+    let bestAt = game.best_at
+    console.log(bestAt);
     let minPlayers = parseInt(game.minplayers)
     let maxPlayers = parseInt(game.maxplayers)
     let minPlayTime = parseInt(game.minplaytime)
@@ -31,7 +32,7 @@ const filterGames = (games, params) => {
       }
     }
 
-    if (bestAt === paramsPlayerCount) {
+    if (bestAt.includes(params.playerCount)) {
       bestAtGames.push(game)
     } else if (paramsPlayerCount >= minPlayers && paramsPlayerCount <= maxPlayers) {
       playableAtCountGames.push(game)
