@@ -18,11 +18,23 @@ const Navbar = (props) => {
                 </h1>
               </Grid.Column>
               {props.user ?
-              <Grid.Column style={{textAlign: 'center', marginTop: '1.5%'}}>
-                    <Button onClick={props.logOut}>
-                      Log Out
-                    </Button>
-            </Grid.Column>
+              <React.Fragment>
+                <Grid.Column style={{textAlign: 'center', marginTop: '1.5%'}} only="computer">
+                      <Button onClick={props.logOut} style={{marginLeft: '75%'}}>
+                        Log Out
+                      </Button>
+                </Grid.Column>
+                <Grid.Column style={{textAlign: 'center', marginTop: '4%'}} only="mobile">
+                      <Button onClick={props.logOut} style={{marginLeft: '10%'}}>
+                        Log Out
+                      </Button>
+                </Grid.Column>
+                <Grid.Column style={{textAlign: 'center', marginTop: '1.5%'}} only="tablet">
+                      <Button onClick={props.logOut} style={{marginLeft: '50%'}}>
+                        Log Out
+                      </Button>
+                </Grid.Column>
+              </React.Fragment>
             : <Grid.Column></Grid.Column>}
         </Grid>
         </Segment>
