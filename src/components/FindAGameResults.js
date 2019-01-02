@@ -52,6 +52,7 @@ const displayFilteredGames = (bestAtGames, playableAtCountGames) => {
               return (
                 <Grid.Column key={game.objectid}>
                   <Boardgame boardgame={game} />
+                  <br/>
                 </Grid.Column>
               )
             } )}
@@ -62,6 +63,7 @@ const displayFilteredGames = (bestAtGames, playableAtCountGames) => {
               return (
                 <Grid.Column key={game.objectid}>
                   <Boardgame boardgame={game} />
+                  <br/>
                 </Grid.Column>
               )
             } )}
@@ -72,6 +74,7 @@ const displayFilteredGames = (bestAtGames, playableAtCountGames) => {
               return (
                 <Grid.Column key={game.objectid}>
                   <Boardgame boardgame={game} />
+                  <br/>
                 </Grid.Column>
               )
             } )}
@@ -85,6 +88,7 @@ const displayFilteredGames = (bestAtGames, playableAtCountGames) => {
               return (
                 <Grid.Column key={game.objectid}>
                   <Boardgame boardgame={game} />
+                  <br/>
                 </Grid.Column>
               )
             } )}
@@ -95,6 +99,7 @@ const displayFilteredGames = (bestAtGames, playableAtCountGames) => {
               return (
                 <Grid.Column key={game.objectid}>
                   <Boardgame boardgame={game} />
+                  <br/>
                 </Grid.Column>
               )
             } )}
@@ -105,6 +110,7 @@ const displayFilteredGames = (bestAtGames, playableAtCountGames) => {
               return (
                 <Grid.Column key={game.objectid}>
                   <Boardgame boardgame={game} />
+                  <br/>
                 </Grid.Column>
               )
             } )}

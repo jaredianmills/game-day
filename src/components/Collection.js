@@ -57,6 +57,7 @@ class Collection extends Component {
                   return (
                     <Grid.Column key={game.objectid}>
                       <Boardgame boardgame={game} />
+                      <br/>
                     </Grid.Column>
                   )
                 } )}
@@ -67,6 +68,7 @@ class Collection extends Component {
                   return (
                     <Grid.Column key={game.objectid}>
                       <Boardgame boardgame={game} />
+                      <br/>
                     </Grid.Column>
                   )
                 } )}
@@ -77,6 +79,7 @@ class Collection extends Component {
                   return (
                     <Grid.Column key={game.objectid}>
                       <Boardgame boardgame={game} />
+                      <br/>
                     </Grid.Column>
                   )
                 } )}
